@@ -55,6 +55,8 @@ const app = (inputUrl) => {
         const downloadOrders = download.download(inputUrl, destination, displayMessage, downloadSuccess);
 };
 
+module.exports = { app }
+
 let myApp = app("https://samplecsvs.s3.amazonaws.com/Sacramentorealestatetransactions.csv");
 
 
