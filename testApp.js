@@ -1,6 +1,6 @@
 const app = require('./app');
 const fs = require('fs');
-
+const download = require('./download');
 
 
 function invalidUrl() {
@@ -13,4 +13,18 @@ function invalidUrl() {
     }
 }
 
+function downloadSuccess() {
+    let myDownload = download.download("https://samplecsvs.s3.amazonaws.com/Sacramentorealestatetransactions.csv", "orders.csv", console.log, function () {
+        fs.stat('orders.csv', function(err, stat) {
+            if(err == null) {
+                console.log('download test pass');
+            } else if(err.code === 'ENOENT') {
+                // file does not exist
+                console.log("download test fail");
+            }
+        });
+    });
+}
+
 const test1 = invalidUrl();
+const test2 = downloadSuccess();
