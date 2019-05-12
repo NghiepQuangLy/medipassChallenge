@@ -11,8 +11,32 @@ const displayMessage = (message) => {
 
 const downloadSuccess = (message) => {
 
+    const options = {
+        file      : './orders.csv',
+        delimiter : ','
+    };
+
+    const orderHeaders = ['orderId', 'customerId', 'item', 'quantity'];
+
     displayMessage(message);
-    readCSV.readCSV(destination, importOrders.importOrders);
+
+    const checkHeaders = csvHeaders(options, function(err, headers) {
+        if (!err) {
+
+            let correctHeaders = true;
+
+            for (let header in orderHeaders) {
+                if (!headers.includes(orderHeaders[header])) {
+                    correctHeaders = false;
+                    break
+                }
+            }
+
+            if (correctHeaders) {
+                readCSV.readCSV(destination, importOrders.importOrders);
+            }
+        }
+    });
 };
 
 const app = (inputUrl) => {
@@ -31,8 +55,6 @@ const app = (inputUrl) => {
         const downloadOrders = download.download(inputUrl, destination, displayMessage, downloadSuccess);
 };
 
-
-// test url
 let myApp = app("https://samplecsvs.s3.amazonaws.com/Sacramentorealestatetransactions.csv");
 
 
