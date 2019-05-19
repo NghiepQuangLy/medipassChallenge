@@ -31,3 +31,6 @@ The file to be used is the app.js file.
 Due to time constraint, the functionality to allow user to use command 
 line arguments to specify the CSV url was not added. Thus, user would 
 need to specify the CSV url within the app.js in the variable inputURL.
+Additionally, user would have to specify a database URL within the importOrders
+module; otherwise the program would crash since it does not know which database
+to talk to.
