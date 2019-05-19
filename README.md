@@ -22,6 +22,10 @@ There is also no performance test (if I do get a chance to implement I was
 thinking of doing something like a timeit in Python with various file 
 sizes).
 
+The last commit to the repo made on May 19th, 2019 (out of the 90 min challenge)
+is an essential bug (found during code review) fix to the program.
+All previous commits were timeboxed to a 90 minute period.
+
 How to run:
 The file to be used is the app.js file.
 Due to time constraint, the functionality to allow user to use command 

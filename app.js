@@ -39,6 +39,9 @@ const downloadSuccess = (message) => {
     });
 };
 
+// the name of the file where downloaded data will be put in
+destination = "orders.csv";
+
 const app = (inputUrl) => {
 
     // check if the url is valid
@@ -48,9 +51,6 @@ const app = (inputUrl) => {
         if (mime.getType(inputUrl) !== "text/csv") {
             throw new Error("The file to be downloaded is not a CSV file but it is a " + mime.getType(inputUrl) + "file.")
         }
-
-    // the name of the file where downloaded data will be put in
-        let destination = "orders.csv";
 
         const downloadOrders = download.download(inputUrl, destination, displayMessage, downloadSuccess);
 };
